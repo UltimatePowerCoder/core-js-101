@@ -21,6 +21,9 @@
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
 function findElement(arr, value) {
+  if (!Array.isArray(arr)) {
+    throw new Error('First argument must be an array');
+  }
   return arr.indexOf(value);
 }
 
@@ -35,10 +38,21 @@ function findElement(arr, value) {
  *    2 => [ 1, 3 ]
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
-}
+function generateOdds(len) {
+  if (typeof len !== 'number' || len < 1) {
+    throw new Error('Length must be a positive number');
+  }
 
+  const odds = [];
+  let i = 0; // Инициализация переменной
+
+  while (i < len) {
+    odds.push(2 * i + 1);
+    i += 1; // Используем обычное увеличение
+  }
+
+  return odds;
+}
 
 /**
  * Returns the doubled array - elements of the specified array
@@ -68,8 +82,12 @@ function doubleArray(arr) {
  *    [-1, 2, -5, -4, 0] => [ 2 ]
  *    [] => []
  */
-function getArrayOfPositives(/* arr */) {
-  throw new Error('Not implemented');
+function getArrayOfPositives(arr) {
+  if (!Array.isArray(arr)) {
+    throw new Error('Input must be an array');
+  }
+
+  return arr.filter((num) => num > 0);
 }
 
 /**
@@ -83,8 +101,12 @@ function getArrayOfPositives(/* arr */) {
  *    [ 1, 2, 3, 4, 5 ] => []
  *    [ 'cat, 'dog', 'raccoon' ] => [ 'cat', 'dog', 'raccoon' ]
  */
-function getArrayOfStrings(/* arr */) {
-  throw new Error('Not implemented');
+function getArrayOfStrings(arr) {
+  if (!Array.isArray(arr)) {
+    throw new Error('Input must be an array');
+  }
+
+  return arr.filter((item) => typeof item === 'string');
 }
 
 /**
@@ -174,8 +196,15 @@ function getHead(/* arr, n */) {
  *    [ 1, 3, 4, 5 ], 2  => [ 4, 5 ]
  *    [ 'a', 'b', 'c', 'd'], 3  => [ 'b', 'c', 'd' ]
  */
-function getTail(/* arr, n */) {
-  throw new Error('Not implemented');
+function getTail(arr, n) {
+  if (!Array.isArray(arr)) {
+    throw new Error('First argument must be an array');
+  }
+  if (typeof n !== 'number' || n < 0) {
+    throw new Error('Second argument must be a non-negative number');
+  }
+
+  return arr.slice(-n);
 }
 
 
